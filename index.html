@@ -5,124 +5,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Raunak Sarkar — Karting Portfolio</title>
   <meta name="description" content="Raunak Sarkar | Karting Racer | Portfolio, highlights, gallery, contact." />
-  <meta property="og:title" content="Raunak Sarkar — Karting Portfolio" />
-  <meta property="og:description" content="Karting racer portfolio with highlights, gallery, and contact." />
   <meta name="theme-color" content="#039dfc" />
+  <!-- Flat, Rossi-inspired layout (no glass); Accent blue kept as #039dfc -->
   <style>
-    :root {
-      --accent: #039dfc;
-      --text: #fff;
-      --muted: #cbd5e1; /* slate-300-ish */
-      --card-bg: rgba(255,255,255,0.06);
-      --card-border: rgba(255,255,255,0.12);
-      --bg1: #0b1220; /* deep slate */
-      --bg2: #05070b; /* near black */
-      --radius: 18px;
-      --shadow: 0 8px 30px rgba(0,0,0,0.25);
-      --container: 1200px;
+    :root{
+      --accent:#039dfc; --text:#0f172a; --muted:#475569; --bg:#ffffff; --bg-alt:#f6f8fb; --border:#e5e7eb;
+      --radius:14px; --shadow:0 8px 24px rgba(15,23,42,.06); --container:1200px;
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0; color: var(--text); background: radial-gradient(1200px 600px at 50% -10%, rgba(3,157,252,0.10), transparent), linear-gradient(180deg, #0f172a 0%, var(--bg2) 70%);
-      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-    }
-    .container { max-width: var(--container); margin: 0 auto; padding: 0 16px; }
-    .glass { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: var(--shadow); }
-    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 14px; border: 1px solid transparent; font-weight: 600; cursor: pointer; text-decoration: none; color: #fff; background: var(--accent); }
-    .btn.ghost { background: rgba(255,255,255,0.06); border-color: var(--card-border); }
-    .muted { color: var(--muted); }
+    *,*:before,*:after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+    .container{max-width:var(--container);margin:0 auto;padding:0 16px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;border:1px solid var(--accent);color:#fff;background:var(--accent);text-decoration:none;font-weight:700}
+    .btn.ghost{background:transparent;color:var(--accent)}
+    .muted{color:var(--muted)}
 
-    /* NAV */
-    header { position: sticky; top: 0; z-index: 50; padding: 16px 0; }
-    nav.glass { padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
-    .logo { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,0.08); font-weight: 800; color: var(--accent); }
-    .navlinks { display: none; gap: 20px; }
-    .navlinks a { color: var(--text); text-decoration: none; opacity: .85; }
-    .navlinks a:hover { opacity: 1; }
-    @media (min-width: 768px){ .navlinks { display: flex; } }
+    /* NAV (flat, uppercase, wide spacing) */
+    header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--border)}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    .logo{width:44px;height:44px;border-radius:8px;display:grid;place-items:center;font-weight:900;color:#fff;background:var(--accent)}
+    .navlinks{display:flex;gap:22px}
+    .navlinks a{text-decoration:none;color:inherit;opacity:.85;letter-spacing:.06em;text-transform:uppercase;font-weight:700;font-size:13px}
+    .navlinks a:hover{opacity:1;color:var(--accent)}
 
-    /* HERO */
-    .hero { padding: 64px 0 24px; }
-    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; }
-    @media (min-width: 992px){ .hero-grid { grid-template-columns: 1.1fr .9fr; gap: 28px; } }
-    .hero h1 { font-size: clamp(32px, 5vw, 56px); line-height: 1.1; margin: 0; font-weight: 900; }
-    .hero .role { color: var(--accent); margin-top: 6px; display: block; }
-    .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
-    .hero .socials { display: flex; gap: 16px; margin-top: 14px; }
-    .hero-card { padding: 8px; }
-    .hero-card .imgwrap { position: relative; border-radius: 16px; overflow: hidden; }
-    .hero-card img { width: 100%; height: clamp(260px, 50vw, 420px); object-fit: cover; display: block; }
-    .hero-card .overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(2,6,23,0.8), rgba(2,6,23,0.05)); }
-    .hero-card .lower { position: absolute; left: 14px; right: 14px; bottom: 14px; display: flex; align-items: center; justify-content: space-between; }
+    /* HERO (full-bleed banner w/ overlay title like section headers on Rossi site) */
+    .hero{position:relative}
+    .hero .banner{position:relative}
+    .hero img{width:100%;height: clamp(280px,50vw,520px);object-fit:cover;display:block}
+    .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.2) 40%, rgba(0,0,0,0) 100%)}
+    .hero .title{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);text-align:center;color:#fff}
+    .hero h1{margin:0;font-size: clamp(28px,6vw,64px);line-height:1.05;font-weight:900;letter-spacing:.02em}
+    .hero .role{display:block;margin-top:6px;font-weight:800;color:#cfe9ff}
 
-    /* STATS */
-    .stats { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 18px; }
-    @media (min-width: 640px){ .stats { grid-template-columns: repeat(3, 1fr); } }
-    .stat { padding: 18px; display: flex; gap: 12px; align-items: center; }
-    .stat .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 24px rgba(3,157,252,0.6); }
+    /* STRIP tiles (Rossi-style big category tiles) */
+    .tiles{padding:28px 0;background:var(--bg)}
+    .tile-grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:900px){.tile-grid{grid-template-columns:repeat(3,1fr)}}
+    .tile{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff;box-shadow:var(--shadow);transition:transform .2s ease}
+    .tile:hover{transform:translateY(-2px)}
+    .tile .timg{position:relative}
+    .tile .timg img{width:100%;height:180px;object-fit:cover;display:block}
+    .tile h3{margin:14px 16px 4px;font-size:18px;letter-spacing:.04em;text-transform:uppercase}
+    .tile p{margin:0 16px 16px;color:var(--muted)}
 
-    /* SECTIONS */
-    section { padding: 72px 0; position: relative; }
-    section h2 { margin: 0 0 8px; font-size: clamp(26px, 3.6vw, 36px); font-weight: 800; color: var(--accent); letter-spacing: .2px; }
-    section p.lead { margin: 0 0 24px; color: var(--muted); max-width: 740px; }
+    /* SECTION headings */
+    section{padding:72px 0}
+    h2{margin:0 0 10px;color:var(--accent);font-size: clamp(22px,3.2vw,34px);font-weight:900;letter-spacing:.02em;text-transform:uppercase}
+    p.lead{margin:0 0 24px;color:var(--muted);max-width:760px}
 
     /* ABOUT */
-    .about-grid { display: grid; grid-template-columns: 1fr; gap: 20px; align-items: start; }
-    @media (min-width: 992px){ .about-grid { grid-template-columns: 2fr 1fr; } }
-    .about-card { padding: 22px; }
-    .about-pic { padding: 8px; }
-    .about-pic img { border-radius: 16px; width: 100%; height: 380px; object-fit: cover; display: block; }
-    .twocol { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 18px; }
-    @media (min-width: 640px){ .twocol { grid-template-columns: 1fr 1fr; } }
-    .mini { border-radius: 14px; padding: 14px; background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); }
-
-    /* HIGHLIGHTS */
-    .grid-3 { display: grid; grid-template-columns: 1fr; gap: 16px; }
-    @media (min-width: 768px){ .grid-3 { grid-template-columns: repeat(3, 1fr); } }
-    .highlight { padding: 18px; }
+    .about-grid{display:grid;grid-template-columns:1fr;gap:24px}
+    @media(min-width:950px){.about-grid{grid-template-columns:1.4fr .8fr}}
+    .card{border:1px solid var(--border);border-radius:14px;padding:22px;background:#fff;box-shadow:var(--shadow)}
+    .portrait img{width:100%;height:380px;object-fit:cover;border-radius:12px;display:block}
+    .twocol{display:grid;gap:12px}
+    @media(min-width:640px){.twocol{grid-template-columns:1fr 1fr}}
+    .mini{border:1px solid var(--border);border-radius:12px;padding:14px;background:var(--bg-alt)}
 
     /* GALLERY */
-    .gallery { display: grid; grid-template-columns: 1fr; gap: 12px; }
-    @media (min-width: 640px){ .gallery { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 992px){ .gallery { grid-template-columns: repeat(3, 1fr); } }
-    .gallery .cell { padding: 8px; }
-    .gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 14px; display: block; }
+    .gallery{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:640px){.gallery{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1000px){.gallery{grid-template-columns:repeat(3,1fr)}}
+    .gallery img{width:100%;height:220px;object-fit:cover;border-radius:12px;border:1px solid var(--border);background:#fff}
 
     /* CONTACT */
-    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-    @media (min-width: 900px){ .contact-grid { grid-template-columns: 3fr 2fr; } }
-    form .field { display: grid; gap: 6px; }
-    form input, form textarea { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--card-border); background: rgba(255,255,255,0.06); color: var(--text); outline: none; }
-    form textarea { min-height: 120px; resize: vertical; }
-    .row { display: grid; grid-template-columns: 1fr; gap: 12px; }
-    @media (min-width: 640px){ .row.two { grid-template-columns: 1fr 1fr; } }
-    .social-inline { display: flex; align-items: center; gap: 16px; }
+    .contact-grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:900px){.contact-grid{grid-template-columns:3fr 2fr}}
+    form .field{display:grid;gap:6px}
+    input,textarea{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:#fff;color:inherit;outline:none}
+    textarea{min-height:120px;resize:vertical}
+    .row{display:grid;gap:12px}
+    @media(min-width:640px){.row.two{grid-template-columns:1fr 1fr}}
 
     /* FOOTER */
-    footer { padding: 0 0 60px; }
-    .footerbar { padding: 16px; display: flex; flex-direction: column; gap: 16px; align-items: center; justify-content: space-between; }
-    @media (min-width: 640px){ .footerbar { flex-direction: row; } }
-
-    /* DECOR BLOBS */
-    .blobs::before, .blobs::after {
-      content: ""; position: absolute; pointer-events: none; filter: blur(60px); opacity: .35; z-index: -1;
-    }
-    .blobs::before { width: 320px; height: 320px; background: var(--accent); top: -120px; left: 50%; transform: translateX(-50%); }
-    .blobs::after { width: 380px; height: 380px; background: var(--accent); bottom: -80px; right: -60px; }
-
-    /* Helpers */
-    .spacer { height: 10px; }
-    .hidden { display: none; }
+    footer{padding:54px 0 64px;background:var(--bg-alt);border-top:1px solid var(--border)}
+    .footerbar{display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:space-between}
+    @media(min-width:700px){.footerbar{flex-direction:row}}
   </style>
 </head>
 <body>
   <!-- NAV -->
   <header>
     <div class="container">
-      <nav class="glass">
+      <nav>
         <a href="#home" class="brand">
           <div class="logo">RS</div>
           <strong>Raunak Sarkar</strong>
@@ -138,45 +104,40 @@
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO (banner) -->
   <main id="home" class="hero">
-    <div class="container hero-grid blobs">
-      <div>
-        <h1>
-          RAUNAK SARKAR
-          <span class="role">Karting Racer</span>
-        </h1>
-        <p class="muted" style="margin-top:10px; max-width: 720px;">Chasing apexes, one lap at a time. Focused on fundamentals—race craft, braking points, and clean lines. Open to coaching, practice sessions, and media shoots.</p>
-        <div class="actions">
+    <div class="banner">
+      <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1600&auto=format&fit=crop" alt="Track banner" />
+      <div class="overlay"></div>
+      <div class="title">
+        <h1>RAUNAK SARKAR <span class="role">Karting Racer</span></h1>
+        <div style="margin-top:14px;display:flex;gap:12px;justify-content:center">
           <a href="#gallery" class="btn">See Gallery</a>
           <a href="#about" class="btn ghost">About Raunak</a>
         </div>
-        <div class="socials">
-          <a class="muted" href="https://instagram.com/yourhandle" target="_blank" rel="noreferrer">Instagram</a>
-          <a class="muted" href="https://youtube.com/@yourchannel" target="_blank" rel="noreferrer">YouTube</a>
-        </div>
-      </div>
-
-      <div class="glass hero-card">
-        <div class="imgwrap">
-          <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1600&auto=format&fit=crop" alt="Raunak on track placeholder" />
-          <div class="overlay"></div>
-          <div class="lower">
-            <div>
-              <div class="muted" style="font-size: 14px;">India</div>
-              <div style="font-weight: 700;">Ready to race</div>
-            </div>
-            <a class="btn" href="#contact">Invite to Next Event</a>
-          </div>
-        </div>
       </div>
     </div>
 
-    <div class="container stats">
-      <div class="glass stat"><div class="dot"></div><div><div class="muted" style="font-size:14px;">Class</div><div style="font-weight:700;">Beginner / Cadet</div></div></div>
-      <div class="glass stat"><div class="dot"></div><div><div class="muted" style="font-size:14px;">Goals</div><div style="font-weight:700;">Build pace & consistency</div></div></div>
-      <div class="glass stat"><div class="dot"></div><div><div class="muted" style="font-size:14px;">Season</div><div style="font-weight:700;">Open to invites</div></div></div>
-    </div>
+    <!-- Rossi-like category tiles (flat) -->
+    <section class="tiles">
+      <div class="container tile-grid">
+        <a class="tile" href="#about">
+          <div class="timg"><img src="https://images.unsplash.com/photo-1520975682031-a61e33c0c2f1?q=80&w=1200&auto=format&fit=crop" alt="About" /></div>
+          <h3>About</h3>
+          <p class="muted">Who I am and what I’m working on.</p>
+        </a>
+        <a class="tile" href="#highlights">
+          <div class="timg"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1200&auto=format&fit=crop" alt="Highlights" /></div>
+          <h3>Highlights</h3>
+          <p class="muted">Goals, training focus, and milestones.</p>
+        </a>
+        <a class="tile" href="#gallery">
+          <div class="timg"><img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1200&auto=format&fit=crop" alt="Gallery" /></div>
+          <h3>Gallery</h3>
+          <p class="muted">Photos and reels from track days.</p>
+        </a>
+      </div>
+    </section>
   </main>
 
   <!-- ABOUT -->
@@ -185,52 +146,35 @@
       <h2>About</h2>
       <p class="lead">A clean intro instead of a long race list. Keep it simple and sharp for a beginner portfolio.</p>
       <div class="about-grid">
-        <article class="glass about-card">
-          <h3 style="margin: 0; font-size: 22px;">Who I Am</h3>
+        <article class="card">
+          <h3 style="margin:0 0 6px;font-size:22px">Who I Am</h3>
           <p class="muted">I’m Raunak Sarkar, a karting racer based in India. I’ve recently begun competitive karting and am focused on fundamentals: race craft, braking points, and clean lines. My short‑term target is to gain seat time, improve lap consistency, and learn from every session.</p>
-          <div class="twocol">
-            <div class="mini">
-              <div class="muted" style="font-size: 14px;">Coaching</div>
-              <div style="font-weight: 600;">Open to professional coaching & track days</div>
-            </div>
-            <div class="mini">
-              <div class="muted" style="font-size: 14px;">Availability</div>
-              <div style="font-weight: 600;">Weekends & holidays; willing to travel</div>
-            </div>
+          <div class="twocol" style="margin-top:14px">
+            <div class="mini"><div class="muted" style="font-size:14px">Coaching</div><div style="font-weight:600">Open to professional coaching & track days</div></div>
+            <div class="mini"><div class="muted" style="font-size:14px">Availability</div><div style="font-weight:600">Weekends & holidays; willing to travel</div></div>
           </div>
-          <div class="spacer"></div>
+          <div style="height:10px"></div>
           <a class="btn" href="#contact">Request Media Kit</a>
         </article>
-        <aside class="glass about-pic">
-          <img src="https://images.unsplash.com/photo-1520975682031-a61e33c0c2f1?q=80&w=800&auto=format&fit=crop" alt="Portrait placeholder" />
-        </aside>
+        <aside class="portrait"><img src="https://images.unsplash.com/photo-1520975682031-a61e33c0c2f1?q=80&w=800&auto=format&fit=crop" alt="Portrait" /></aside>
       </div>
     </div>
   </section>
 
   <!-- HIGHLIGHTS -->
-  <section id="highlights">
+  <section id="highlights" style="background:var(--bg-alt)">
     <div class="container">
       <h2>Highlights</h2>
       <p class="lead">No long results table yet—just what matters for growth and for potential sponsors.</p>
-      <div class="grid-3">
-        <div class="glass highlight">
-          <h4 style="margin: 0 0 6px;">Clean Laps & Consistency</h4>
-          <p class="muted">Clocking repeatable laps within a narrow delta, focusing on smooth throttle and brake control.</p>
-        </div>
-        <div class="glass highlight">
-          <h4 style="margin: 0 0 6px;">Racecraft Basics</h4>
-          <p class="muted">Learning safe overtakes, defensive lines, and positioning into apexes without contact.</p>
-        </div>
-        <div class="glass highlight">
-          <h4 style="margin: 0 0 6px;">Fitness & Reflexes</h4>
-          <p class="muted">Building core strength and reaction time for longer stints without fatigue.</p>
-        </div>
+      <div class="tile-grid">
+        <div class="card"><h4 style="margin:0 0 6px">Clean Laps & Consistency</h4><p class="muted">Clocking repeatable laps within a narrow delta, focusing on smooth throttle and brake control.</p></div>
+        <div class="card"><h4 style="margin:0 0 6px">Racecraft Basics</h4><p class="muted">Learning safe overtakes, defensive lines, and positioning into apexes without contact.</p></div>
+        <div class="card"><h4 style="margin:0 0 6px">Fitness & Reflexes</h4><p class="muted">Building core strength and reaction time for longer stints without fatigue.</p></div>
       </div>
-      <div class="grid-3" style="margin-top: 16px;">
-        <div class="glass highlight"><p class="muted" style="margin:0;">📍 Based in India; available for events across the country.</p></div>
-        <div class="glass highlight"><p class="muted" style="margin:0;">🗓️ Open calendar for practice sessions & media shoots.</p></div>
-        <div class="glass highlight"><p class="muted" style="margin:0;">🏆 Early career stage—hungry to learn and improve every lap.</p></div>
+      <div class="tile-grid" style="margin-top:16px">
+        <div class="card"><p class="muted" style="margin:0">📍 Based in India; available for events across the country.</p></div>
+        <div class="card"><p class="muted" style="margin:0">🗓️ Open calendar for practice sessions & media shoots.</p></div>
+        <div class="card"><p class="muted" style="margin:0">🏆 Early career stage—hungry to learn and improve every lap.</p></div>
       </div>
     </div>
   </section>
@@ -241,54 +185,40 @@
       <h2>Gallery</h2>
       <p class="lead">Swap these placeholders with your own images or reels.</p>
       <div class="gallery">
-        <div class="glass cell"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1200&auto=format&fit=crop" alt="Gallery 1" /></div>
-        <div class="glass cell"><img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200&auto=format&fit=crop" alt="Gallery 2" /></div>
-        <div class="glass cell"><img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1200&auto=format&fit=crop" alt="Gallery 3" /></div>
-        <div class="glass cell"><img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1200&auto=format&fit=crop" alt="Gallery 4" /></div>
-        <div class="glass cell"><img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1200&auto=format&fit=crop" alt="Gallery 5" /></div>
-        <div class="glass cell"><img src="https://images.unsplash.com/photo-1511914265872-c40672604a66?q=80&w=1200&auto=format&fit=crop" alt="Gallery 6" /></div>
+        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1200&auto=format&fit=crop" alt="Gallery 1" />
+        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200&auto=format&fit=crop" alt="Gallery 2" />
+        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1200&auto=format&fit=crop" alt="Gallery 3" />
+        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1200&auto=format&fit=crop" alt="Gallery 4" />
+        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1200&auto=format&fit=crop" alt="Gallery 5" />
+        <img src="https://images.unsplash.com/photo-1511914265872-c40672604a66?q=80&w=1200&auto=format&fit=crop" alt="Gallery 6" />
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
+  <section id="contact" style="background:var(--bg-alt)">
     <div class="container">
       <h2>Contact</h2>
       <p class="lead">For invites, coaching, sponsorships, or media.</p>
       <div class="contact-grid">
-        <div class="glass" style="padding: 20px;">
+        <div class="card">
           <form onsubmit="event.preventDefault(); window.location='mailto:raunak@example.com?subject=Inquiry%20from%20Portfolio&body=' + encodeURIComponent(document.getElementById('msg').value);">
             <div class="row two">
-              <div class="field">
-                <label class="muted" for="name">Name</label>
-                <input id="name" placeholder="Your name" required />
-              </div>
-              <div class="field">
-                <label class="muted" for="email">Email</label>
-                <input id="email" type="email" placeholder="you@example.com" required />
-              </div>
+              <div class="field"><label class="muted" for="name">Name</label><input id="name" placeholder="Your name" required></div>
+              <div class="field"><label class="muted" for="email">Email</label><input id="email" type="email" placeholder="you@example.com" required></div>
             </div>
-            <div class="field" style="margin-top:12px;">
-              <label class="muted" for="msg">Message</label>
-              <textarea id="msg" placeholder="Tell me about your event or opportunity..."></textarea>
-            </div>
-            <div class="row two" style="align-items:center; margin-top:12px;">
-              <div class="social-inline">
-                <a class="muted" href="https://instagram.com/yourhandle" target="_blank" rel="noreferrer">Instagram</a>
-                <a class="muted" href="https://youtube.com/@yourchannel" target="_blank" rel="noreferrer">YouTube</a>
-              </div>
-              <div style="text-align:right;">
-                <button class="btn" type="submit">Send Message</button>
-              </div>
+            <div class="field" style="margin-top:12px"><label class="muted" for="msg">Message</label><textarea id="msg" placeholder="Tell me about your event or opportunity..."></textarea></div>
+            <div class="row two" style="align-items:center;margin-top:12px">
+              <div style="display:flex;gap:16px"><a class="muted" href="https://instagram.com/yourhandle" target="_blank" rel="noreferrer">Instagram</a><a class="muted" href="https://youtube.com/@yourchannel" target="_blank" rel="noreferrer">YouTube</a></div>
+              <div style="text-align:right"><button class="btn" type="submit">Send Message</button></div>
             </div>
           </form>
         </div>
-        <aside class="glass" style="padding:20px;">
-          <h4 style="margin: 0 0 6px;">Direct email</h4>
-          <p class="muted" style="margin-top: 0;">Prefer email? Reach out at</p>
+        <aside class="card">
+          <h4 style="margin:0 0 6px">Direct email</h4>
+          <p class="muted" style="margin:0">Prefer email? Reach out at</p>
           <p><a class="btn" href="mailto:raunak@example.com">raunak@example.com</a></p>
-          <p class="muted">Media kit, availability, and track‑day schedule on request.</p>
+          <p class="muted" style="margin:0">Media kit, availability, and track‑day schedule on request.</p>
         </aside>
       </div>
     </div>
@@ -296,9 +226,9 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="container glass footerbar">
-      <div class="muted" style="font-size: 14px;">© <span id="y"></span> Raunak Sarkar. All rights reserved.</div>
-      <nav style="display:flex; gap:16px; font-size:14px;">
+    <div class="container footerbar">
+      <div class="muted" style="font-size:14px">© <span id="y"></span> Raunak Sarkar. All rights reserved.</div>
+      <nav style="display:flex;gap:16px;font-size:14px">
         <a class="muted" href="#home">Home</a>
         <a class="muted" href="#about">About</a>
         <a class="muted" href="#gallery">Gallery</a>
@@ -307,9 +237,6 @@
     </div>
   </footer>
 
-  <script>
-    // set year
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>
